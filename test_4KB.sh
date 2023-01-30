@@ -1,0 +1,12 @@
+./db_bench \
+--fs_uri=zenfs://dev:nvme2n1 \
+--benchmarks=fillrandom,stats \
+--num=500000000 \
+--key_size=16 \
+--value_size=1024 \
+--block_size=4096 \
+--compression_type="none" \
+--max_background_compactions=1 \
+--max_background_flushes=1 \
+--statistics \
+--block_align=true > test_50000_4KB_n2.log

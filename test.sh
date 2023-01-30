@@ -1,0 +1,14 @@
+./db_bench \
+--fs_uri=zenfs://dev:nvme0n1 \
+--benchmarks=fillrandom,stats \
+--num=200000000 \
+--key_size=16 \
+--value_size=128 \
+--block_size=4096 \
+--compression_type="none" \
+--max_background_compactions=1 \
+--max_background_flushes=1 \
+--block_align=true \
+--threads=1 \
+--statistics \
+--block_align=true > test_20000_128kvsize_remapdb.log
