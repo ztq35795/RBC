@@ -1,32 +1,16 @@
-## RocksDB: A Persistent Key-Value Store for Flash and RAM Storage
+# **RBC: Randomness-Resistant Block Compaction Strategy**
 
-[![CircleCI Status](https://circleci.com/gh/facebook/rocksdb.svg?style=svg)](https://circleci.com/gh/facebook/rocksdb)
-[![TravisCI Status](https://api.travis-ci.com/facebook/rocksdb.svg?branch=main)](https://travis-ci.com/github/facebook/rocksdb)
-[![Appveyor Build status](https://ci.appveyor.com/api/projects/status/fbgfu0so3afcno78/branch/main?svg=true)](https://ci.appveyor.com/project/Facebook/rocksdb/branch/main)
-[![PPC64le Build Status](http://140-211-168-68-openstack.osuosl.org:8080/buildStatus/icon?job=rocksdb&style=plastic)](http://140-211-168-68-openstack.osuosl.org:8080/job/rocksdb)
+## **Introduction**
+RBC (**Randomness-Resistant Block Compaction**) is a novel strategy designed to improve the performance of block-grained compaction in Zoned Namespace SSDs (ZNS SSDs). By addressing issues such as fragmentation, high random read overhead, and inefficient prefetching, RBC optimizes throughput and reduces latency for modern key-value stores like RocksDB.
 
-RocksDB is developed and maintained by Facebook Database Engineering Team.
-It is built on earlier work on [LevelDB](https://github.com/google/leveldb) by Sanjay Ghemawat (sanjay@google.com)
-and Jeff Dean (jeff@google.com)
+### **Key Features**
+- **Prefetch Cache**: Improves cache hit rates during remapped data block reads.
+- **Reorganization**: Reduces data fragmentation to optimize I/O patterns.
+- **Dynamic Read Strategies**: Adapts compaction strategies based on dirty block ratios.
+- **High Throughput**: Enhanced performance for write-intensive and mixed workloads.
+- **Low Latency**: Reduces random read delays and improves range query efficiency.
+---
 
-This code is a library that forms the core building block for a fast
-key-value server, especially suited for storing data on flash drives.
-It has a Log-Structured-Merge-Database (LSM) design with flexible tradeoffs
-between Write-Amplification-Factor (WAF), Read-Amplification-Factor (RAF)
-and Space-Amplification-Factor (SAF). It has multi-threaded compactions,
-making it especially suitable for storing multiple terabytes of data in a
-single database.
+For any questions or issues, feel free to contact:
 
-Start with example usage here: https://github.com/facebook/rocksdb/tree/main/examples
-
-See the [github wiki](https://github.com/facebook/rocksdb/wiki) for more explanation.
-
-The public interface is in `include/`.  Callers should not include or
-rely on the details of any other header files in this package.  Those
-internal APIs may be changed without warning.
-
-Design discussions are conducted in https://www.facebook.com/groups/rocksdb.dev/ and https://rocksdb.slack.com/
-
-## License
-
-RocksDB is dual-licensed under both the GPLv2 (found in the COPYING file in the root directory) and Apache 2.0 License (found in the LICENSE.Apache file in the root directory).  You may select, at your option, one of the above-listed licenses.
+Tianqi Zhan (Email: zhantianqi@hust.edu.cn)
